@@ -5,12 +5,13 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-
 
 @Entity
 @Table(name = "eventi")
@@ -27,8 +28,8 @@ public class Evento implements Serializable{
 
 	private String descrizione;
 	@Column(nullable = false)
-
-	private String tipo;
+	@Enumerated(EnumType.STRING)
+	private TipoEvento tipo;
 	@Column(nullable = false)
 
 	private Integer numeromax;
@@ -65,11 +66,11 @@ public class Evento implements Serializable{
 		this.descrizione = descrizione;
 	}
 
-	public String getTipo() {
+	public TipoEvento getTipo() {
 		return tipo;
 	}
 
-	public void setTipo(String tipo) {
+	public void setTipo(TipoEvento tipo) {
 		this.tipo = tipo;
 	}
 
@@ -87,22 +88,19 @@ public class Evento implements Serializable{
 				+ tipo + ", numeromax=" + numeromax + "]";
 	}
 
-	public Evento(Long id, String titolo, LocalDate data, String descrizione, String tipo, Integer numeromax) {
+	public Evento(String titolo,LocalDate data,  String descrizione, TipoEvento tipo, Integer numeromax) {
 		super();
-		this.id = id;
-		this.titolo = titolo;
 		this.data = data;
+		this.titolo = titolo;
 		this.descrizione = descrizione;
 		this.tipo = tipo;
 		this.numeromax = numeromax;
 	}
 
-	public Evento(String titolo, LocalDate data, String descrizione, String tipo, Integer numeromax) {
-		super();
-		this.titolo = titolo;
-		this.data = data;
-		this.descrizione = descrizione;
-		this.tipo = tipo;
-		this.numeromax = numeromax;
+	public Evento() {
+		// TODO Auto-generated constructor stub
 	}
+
+
+
 }

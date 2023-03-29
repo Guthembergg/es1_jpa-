@@ -41,7 +41,7 @@ public class EventoDAO {
 	}
 
 	public static List<Evento> findAll() {
-		Query q = em.createNamedQuery("User.findAll");
+		Query q = em.createNamedQuery("eventi.findAll");
 		return q.getResultList();
 	}
 
